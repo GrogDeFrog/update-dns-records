@@ -1,0 +1,11 @@
+{
+  "payload": {
+    "content": "CURRENT_IP_PLACEHOLDER",
+    "name": "example.com",
+    "proxied": true,
+    "type": "A",
+    "comment": "Update IP CURRENT_DATE_PLACEHOLDER",
+    "tags": [],
+    "ttl": 60
+  }
+}

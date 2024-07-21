@@ -1,0 +1,30 @@
+{
+  "zones": {
+    "saeculum": {
+      "name": "saeculum.net",
+      "records": [
+        {
+          "name": "saeculum.net",
+          "type": "A"
+        },
+        {
+          "name": "www.saeculum.net",
+          "type": "A"
+        },
+        {
+          "name": "time.saeculum.net",
+          "type": "A"
+        }
+      ]
+    },
+    "assiduous": {
+      "name": "assiduous.one",
+      "records": [
+        {
+          "name": "time.assiduous.one",
+          "type": "A"
+        }
+      ]
+    }
+  }
+}
