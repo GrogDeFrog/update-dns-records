@@ -94,9 +94,7 @@ for zone in $zones; do
         -d "$payload")
 
     if [ $(jq .success <<< $response) = "true" ]; then
-      if [ "$1" = "-s" ] || [ "$1" = "--silent" ]; then
-        :
-      else
+      if [ "$1" != "-s" ] && [ "$1" != "--silent" ]; then
         echo "Make PUT request for record id \`$record_id\`"
         echo "Response $(date +%y-%m-%d_%H-%M-%S): success!"
       fi
