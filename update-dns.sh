@@ -43,6 +43,7 @@ for zone in $zones; do
   # Get the zone ID for the record whose name matches the one in the json file
   # WARNING: If multiple zones have the same name, this will only return the
   # first!
+  # I didn't feel like doing the key-matching algorithm I did for the records
   zone_id=$(echo $cf_zone_data | jq -r --arg zone_name "$zone_name" ' .result[] | select(.name == $zone_name) | .id' | head -n 1)
   #echo -e "Updating DNS for zone: $zone_name\n"
 
@@ -52,6 +53,9 @@ for zone in $zones; do
       -H "Content-Type: application/json")
   
   # Grabs the record ids
+  # Does this by filtering zones by each key in the entry at active_records file
+  # until there are no matching zones or it runs out of keys to check
+  # If there are multiple matches, it just prints the first one
   records=$(jq -c ".zones[\"$zone\"].records[]" $active_records)
   for record in $records; do
     filtered_data=$cf_record_data

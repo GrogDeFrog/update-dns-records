@@ -1,7 +1,7 @@
 # Instructions
-There is a list of DNS records in `active-records.json`. The script,
-`update-dns-records`, matches the details within that to records wtithin
-Cloudflare and then pushes the server's IP to those records.  
+The script, `update-dns-records`, matches the records in `active-records.json`
+to the records within the zone sharing that name in Cloudflare and then pushes the server's IP
+to those records.  
 
 I am tired. I will make this more verbose later when I can.  
 
