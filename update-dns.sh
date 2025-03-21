@@ -77,9 +77,6 @@ for zone in $zones; do
     # Record ID acquired lmao
     record_id=$(echo $filtered_data | jq -r ' .result[0] | .id')
 
-    #echo "Updating DNS for record: $(echo $filtered_data | jq -r ' .result[0] | .name')"
-
-    header=$zone_header
     payload=$(jq -n --argjson record "$record" --argjson default_payload "$default_payload" '
       $default_payload as $payload |
       $record | to_entries | reduce .[] as $item (
@@ -88,10 +85,8 @@ for zone in $zones; do
       )
     ')
 
-    # Yes, queen.
-    api_endpoint="https://api.cloudflare.com/client/v4/zones/$zone_id/dns_records/$record_id"
-
     # Making put request and storing response
+    api_endpoint="https://api.cloudflare.com/client/v4/zones/$zone_id/dns_records/$record_id"
     response=$(curl -s -X PUT "$api_endpoint" \
         -H "Content-Type: application/json" \
         -H "Authorization: Bearer $api_token" \
