@@ -5,7 +5,7 @@
 # When it is toggled, the only output this produces is error messages!
 #
 
-cd /home/saeculum/update-dns-records/
+cd "$(dirname "${BASH_SOURCE[0]}")"
 
 # File paths
 active_records=active-records.json
